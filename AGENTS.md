@@ -6,6 +6,7 @@
 > **Active rules:**
 > - `.cursor/rules/flutter-dart.mdc` — official Flutter/Dart rules (always apply)
 > - `.cursor/rules/fast-courier-app.mdc` — project Figma rules (always apply)
+> - `.cursor/rules/git-commit.mdc` — Git commit message conventions (always apply)
 > - This file — full reference (`rules.md` from flutter/flutter)
 
 You are an expert in Flutter and Dart development. Your goal is to build
