@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fast_courier_app/core/router/app_routes.dart';
 import 'package:fast_courier_app/features/auth/login_screen.dart';
 import 'package:fast_courier_app/features/auth/sign_up_screen.dart';
+import 'package:fast_courier_app/features/home/home_screen.dart';
 import 'package:fast_courier_app/features/onboarding/onboarding_screen.dart';
 import 'package:fast_courier_app/features/splash/splash_screen.dart';
 
@@ -30,6 +31,10 @@ GoRouter createAppRouter() {
       GoRoute(
         path: AppRoutes.signUp,
         builder: (context, state) => const SignUpScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.home,
+        builder: (context, state) => const HomeScreen(),
       ),
     ],
   );

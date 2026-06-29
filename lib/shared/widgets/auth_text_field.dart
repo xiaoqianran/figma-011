@@ -1,0 +1,89 @@
+import 'package:flutter/material.dart';
+
+import 'package:fast_courier_app/core/theme/app_colors.dart';
+import 'package:fast_courier_app/core/theme/app_text_styles.dart';
+
+/// Inline label + value field with bottom border — Figma auth input style.
+class AuthTextField extends StatelessWidget {
+  const AuthTextField({
+    super.key,
+    required this.label,
+    required this.controller,
+    this.obscureText = false,
+    this.keyboardType,
+    this.onToggleVisibility,
+    this.showVisibilityToggle = false,
+  });
+
+  final String label;
+  final TextEditingController controller;
+  final bool obscureText;
+  final TextInputType? keyboardType;
+  final VoidCallback? onToggleVisibility;
+  final bool showVisibilityToggle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 100,
+              child: Text(
+                label,
+                style: AppTextStyles.dmSans(
+                  fontSize: 14,
+                  height: 24,
+                  color: AppColors.white60,
+                ),
+              ),
+            ),
+            Expanded(
+              child: TextField(
+                controller: controller,
+                obscureText: obscureText,
+                keyboardType: keyboardType,
+                style: AppTextStyles.dmSans(
+                  fontSize: 16,
+                  height: 26,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.white,
+                ),
+                cursorColor: AppColors.primary,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  isDense: true,
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+            ),
+            if (showVisibilityToggle)
+              IconButton(
+                onPressed: onToggleVisibility,
+                icon: Icon(
+                  obscureText
+                      ? Icons.visibility_off_outlined
+                      : Icons.visibility_outlined,
+                  color: AppColors.white,
+                  size: 18,
+                ),
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(
+                  minWidth: 32,
+                  minHeight: 32,
+                ),
+              ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        const Divider(
+          height: 1,
+          thickness: 1,
+          color: AppColors.white30,
+        ),
+      ],
+    );
+  }
+}
