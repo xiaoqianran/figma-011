@@ -11,7 +11,10 @@ import 'package:fast_courier_app/features/calculate_parcel/calculate_parcel_scre
 import 'package:fast_courier_app/features/ship_parcel/ship_parcel_details_screen.dart';
 import 'package:fast_courier_app/features/ship_parcel/ship_parcel_screen.dart';
 import 'package:fast_courier_app/features/faq/faq_screen.dart';
+import 'package:fast_courier_app/features/chat/chat_detail_screen.dart';
+import 'package:fast_courier_app/features/chat/chat_screen.dart';
 import 'package:fast_courier_app/features/help/help_screen.dart';
+import 'package:fast_courier_app/features/notification/notification_screen.dart';
 import 'package:fast_courier_app/features/menu/menu_screen.dart';
 import 'package:fast_courier_app/features/profile/profile_screen.dart';
 import 'package:fast_courier_app/features/ship_parcel/ship_payment_screen.dart';
@@ -105,6 +108,23 @@ GoRouter createAppRouter() {
       GoRoute(
         path: AppRoutes.help,
         builder: (context, state) => const HelpScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.chat,
+        builder: (context, state) => const ChatScreen(),
+        routes: [
+          GoRoute(
+            path: ':id',
+            builder: (context, state) {
+              final id = state.pathParameters['id']!;
+              return ChatDetailScreen(conversationId: id);
+            },
+          ),
+        ],
+      ),
+      GoRoute(
+        path: AppRoutes.notification,
+        builder: (context, state) => const NotificationScreen(),
       ),
     ],
   );

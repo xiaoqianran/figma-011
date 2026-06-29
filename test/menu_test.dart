@@ -6,6 +6,7 @@ import 'package:fast_courier_app/core/router/app_routes.dart';
 import 'package:fast_courier_app/features/faq/faq_screen.dart';
 import 'package:fast_courier_app/features/help/help_screen.dart';
 import 'package:fast_courier_app/features/menu/menu_screen.dart';
+import 'package:fast_courier_app/features/notification/notification_screen.dart';
 import 'package:fast_courier_app/features/profile/profile_screen.dart';
 
 void main() {
@@ -40,13 +41,17 @@ void main() {
     expect(find.text('Menu'), findsOneWidget);
   });
 
-  testWidgets('Menu navigates to profile, FAQ, and Help',
+  testWidgets('Menu navigates to notification, profile, FAQ, and Help',
       (WidgetTester tester) async {
     final router = GoRouter(
       routes: [
         GoRoute(
           path: AppRoutes.menu,
           builder: (context, state) => const MenuScreen(),
+        ),
+        GoRoute(
+          path: AppRoutes.notification,
+          builder: (context, state) => const NotificationScreen(),
         ),
         GoRoute(
           path: AppRoutes.profile,
@@ -69,6 +74,13 @@ void main() {
         routerConfig: router,
       ),
     );
+
+    await tester.tap(find.text('Notification'));
+    await tester.pumpAndSettle();
+    expect(find.text('Mark All as Read'), findsOneWidget);
+
+    await tester.tap(find.byIcon(Icons.arrow_back));
+    await tester.pumpAndSettle();
 
     await tester.tap(find.byIcon(Icons.edit_outlined));
     await tester.pumpAndSettle();

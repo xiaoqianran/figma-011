@@ -18,4 +18,8 @@ abstract final class AppRoutes {
   static const String profile = '/profile';
   static const String faq = '/faq';
   static const String help = '/help';
+  static const String chat = '/chat';
+  static const String notification = '/notification';
+
+  static String chatDetail(String id) => '$chat/$id';
 }

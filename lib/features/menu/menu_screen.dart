@@ -39,7 +39,7 @@ class MenuScreen extends StatelessWidget {
                   MenuListRow(
                     label: 'Notification',
                     icon: Icons.notifications_outlined,
-                    onTap: () {},
+                    onTap: () => context.push(AppRoutes.notification),
                   ),
                   MenuListRow(
                     label: 'Payment',
